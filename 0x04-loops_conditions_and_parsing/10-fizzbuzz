@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# fizzbuzz
+
+numbers=1
+while [ $numbers -le 100 ]
+do
+    if (( numbers % 3 == 0 )) && (( numbers % 5 == 0 ))
+    then
+        echo "FizzBuzz"
+    elif (( numbers % 5 == 0 ))
+    then
+        echo "Buzz"
+    elif (( numbers % 3 == 0 ))
+    then
+        echo "Fizz"
+    else
+        echo "$numbers"
+    fi
+    numbers=$(( numbers+1 ))
+done
