@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# this bash prints "Best School" using until loop
+
+string=1
+until [ $string -gt 10 ]
+do
+    echo "Best School"
+    string=$(( string+1))
+done
