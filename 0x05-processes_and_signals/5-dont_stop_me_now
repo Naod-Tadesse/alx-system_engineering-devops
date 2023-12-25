@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# stop by process
+
+theprocess=$(pgrep -f 4-to_infinity_and_beyond)
+if ! [ -z "$theprocess" ]
+then
+    kill "$theprocess"
+    echo "Terminated"
+else
+    echo "not found"
+fi
