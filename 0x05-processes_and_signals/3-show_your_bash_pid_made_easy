@@ -1,0 +1,4 @@
+#!/usr/bin/python3
+# show your bash pid made easiy
+
+pgrep bash -l
