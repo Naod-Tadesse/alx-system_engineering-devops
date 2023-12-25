@@ -2,7 +2,7 @@
 # this bash script prints "Best School"  10 time but on 9 prints hi
 
 string=1
-until [ $string -gt 10 ]
+while [ $string -le 10 ]
 do
     if [ $string -eq 9 ]
     then
