@@ -2,3 +2,4 @@
 Host 100.25.3.162
 PasswordAuthentication no
 IdentityFile ~/.ssh/school
+User ubuntu
