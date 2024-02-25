@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # this shell script enbles to connect to remote surver
 
-ssh -i ~/.ssh/school ubuntu@54.88.19.28
+ssh -i ~/.ssh/school ubuntu@54.159.26.191
