@@ -1,5 +1,5 @@
 # this is config file
-Host 100.25.3.162
+Host 54.88.19.28
 PasswordAuthentication no
 IdentityFile ~/.ssh/school
 User ubuntu
