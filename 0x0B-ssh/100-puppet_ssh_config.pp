@@ -1,5 +1,5 @@
 # this modifies the config
-file {'/etc/ssh/ssh_config':
+file {'/home/ssh_conf':
   ensure  => present,
   content => "
     PasswordAuthentication no
