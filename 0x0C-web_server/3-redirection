@@ -2,27 +2,11 @@
 # this script configures redirectin
 
 index_page() {
-	echo 'Hello World' > /var/www/html/index.html
+	echo 'Hello World' | sudo tee  /var/www/html/index.html
 }
 
 redirect_page() {
-	cat << EOF > /etc/nginx/sites-enabled/default
-	echo "server {
-		listen 80;
-		server_name _;
-		root /var/www/html;
-		index index.html;
-
-		location /redirect_me {
-			return 301 http://www.youtube.com/;
-
-		}
-
-		location / {
-			echo 'Hello World!';
-		}
-	}
-EOF
+	sudo sed -i '/listen 80 default_server/s/$/; rewrite ^\/redirect_me https:\/\/www.youtube.com\/ permanent;/' /etc/nginx/sites-available
 }
 
 apt-get update
