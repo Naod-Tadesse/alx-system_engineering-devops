@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# this script configures redirectin
+
+index_page() {
+	echo 'Hello World' > /var/www/html/index.html
+}
+
+redirectt_page() {
+	echo "server {
+		listen 80;
+		server_name _;
+		root /var/www/html;
+		index index.html;
+
+		location /redirect_me {
+			return 301 http://youtube.com
+		}
+	}" > /etx/nginx/sites-available/default
+}
+
+apt-get update
+apt-get install -y nginx
+index_page
+redirectt_page
+sudo service restart nginx
