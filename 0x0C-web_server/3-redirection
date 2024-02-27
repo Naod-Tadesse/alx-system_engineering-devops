@@ -22,4 +22,4 @@ apt-get update
 apt-get install -y nginx
 index_page
 redirectt_page
-sudo service restart nginx
+sudo service nginx restart
