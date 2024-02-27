@@ -5,12 +5,8 @@ index_page() {
 	echo 'Hello World' | sudo tee  /var/www/html/index.html
 }
 
-redirect_page() {
-	sudo sed -i '/listen 80 default_server/s/$/; rewrite ^\/redirect_me https:\/\/www.youtube.com\/ permanent;/' /etc/nginx/sites-available
-}
-
 apt-get update
 apt-get install -y nginx
 index_page
-redirect_page
-sudo service nginx restart
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
+service nginx restart
