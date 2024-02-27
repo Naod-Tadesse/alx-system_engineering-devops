@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# the 404
+
+index_page() {
+	echo "Hello World!" | sudo tee /var/www/html/index.html
+}
+
+redirect_page() {
+	sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
+}
+
+not_found() {
+	echo "Ceci n'ect pas une page" | sudo tee /var/www/html/404.html
+	sed -i '/server_name _;/a \
+		error_page 404 /404.html;\
+		location = /404.html {\
+			root /var/www/html;\
+			internal;\
+		}' /etc/nginx/sites-available/default
+}
+
+apt-get update
+apt-get install -y nginx
+index_page
+redirect_page
+not_found
+sudo service nginx restart
+
