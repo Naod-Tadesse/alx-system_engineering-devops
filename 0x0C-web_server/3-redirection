@@ -27,5 +27,6 @@ EOF
 
 apt-get update
 apt-get install -y nginx
-redirectt_page
+index_page
+redirect_page
 sudo service nginx restart
