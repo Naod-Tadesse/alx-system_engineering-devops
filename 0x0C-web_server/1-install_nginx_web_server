@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 # this bash script configures nginx
 
+index_page() {
+	echo 'Hello World' > /var/ww/html/index.html
+}
+
 apt-get update
 apt-get install -y nginx
-echo 'Hello World!' > /var/www/html/index-default.html
+index_page
 sudo service nginx restart
