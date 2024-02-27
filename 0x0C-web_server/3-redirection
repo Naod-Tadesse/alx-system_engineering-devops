@@ -15,7 +15,7 @@ redirectt_page() {
 		location /redirect_me {
 			return 301 http://youtube.com
 		}
-	}" > /etx/nginx/sites-available/default
+	}" > /etc/nginx/sites-available/default
 }
 
 apt-get update
