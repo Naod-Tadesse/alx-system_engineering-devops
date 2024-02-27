@@ -2,7 +2,7 @@
 # this bash script configures nginx
 
 index_page() {
-	echo 'Hello World' > /var/www/html/index.html
+	echo 'Hello World!' > /var/www/html/index.html
 }
 
 apt-get update
