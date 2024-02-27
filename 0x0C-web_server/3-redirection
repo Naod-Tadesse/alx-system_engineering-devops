@@ -5,7 +5,8 @@ index_page() {
 	echo 'Hello World' > /var/www/html/index.html
 }
 
-redirectt_page() {
+redirect_page() {
+	cat << EOF > /etc/nginx/sites-enabled/default
 	echo "server {
 		listen 80;
 		server_name _;
@@ -20,7 +21,8 @@ redirectt_page() {
 		location / {
 			echo 'Hello World!';
 		}
-	}" > /etc/nginx/sites-available/default
+	}
+EOF
 }
 
 apt-get update
