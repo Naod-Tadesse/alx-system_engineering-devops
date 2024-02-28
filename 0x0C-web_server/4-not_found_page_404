@@ -6,7 +6,7 @@ index_page() {
 }
 
 theredirect_page() {
-	sed -i "67i rewrite ^/redirect_me https://www.twitter.com permanent;" /etc/ngin/sites-available/default
+	sed -i "67i rewrite ^/redirect_me https://www.twitter.com permanent;" /etc/nginx/sites-available/default
 }
 
 
