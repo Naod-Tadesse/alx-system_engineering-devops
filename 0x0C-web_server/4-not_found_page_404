@@ -3,8 +3,16 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
+
+# text to display in root route
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+# replace the 67th line with redirect
 sed -i "67i rewrite ^/redirect_me https://www.twitter.com permanent;" /etc/nginx/sites-available/default
+
+# the text display
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/notfound_404.html
+
+# set up error page in 67th line of the file
 sed -i "67i error_page 404 /notfound_404.html;" /etc/nginx/sites-available/default
 sudo service nginx restart
