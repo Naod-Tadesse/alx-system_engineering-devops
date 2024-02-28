@@ -1,9 +1,23 @@
 #!/usr/bin/env bash
-# 404 not found
-apt-get -y update
-apt-get -y install nginx
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
-sed -i "67i rewrite ^/redirect_me https://www.youtube.com permanent;" /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/notfound_404.html > /dev/null
-sed -i "67i error_page 404 /notfound_404.html;" /etc/nginx/sites-available/default
-service nginx restart
+# create a 404 page
+
+index_page() {
+	echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+}
+
+theredirect_page() {
+	sed -i "67i rewrite ^/redirect_me https://www.twitter.com permanent;" /etc/ngin/sites-available/default
+}
+
+
+thenotfound() {
+	echo "Ceci n'est pas une page" | sudo tee /var/www/html/notfound_404.html
+	sed -i "67i error_page 404 /notfound_404.html;" /etc/nginx/sites-available/default
+}
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+index_page
+theredirect_page
+thenotfound
+sudo service nginx restart
