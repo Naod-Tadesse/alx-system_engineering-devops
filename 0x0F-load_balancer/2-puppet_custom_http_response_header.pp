@@ -1,6 +1,7 @@
 # use puppet to set up header
 
-exec {'sudo apt-get -y update':
+exec {'update':
+  command  => 'sudo apt-get -y update',
   provider => shell
 }
 
