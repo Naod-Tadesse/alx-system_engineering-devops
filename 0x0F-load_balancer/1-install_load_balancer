@@ -21,4 +21,4 @@ backend client_backend
 
 update_and_install
 p_setup
-sevice haproxy restart
+service haproxy restart
