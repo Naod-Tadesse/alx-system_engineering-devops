@@ -8,20 +8,9 @@ notfound() {
 	echo "Ceci n'est pas une page" | sudo tee /var/www/html/notfound_404.html > /dev/null
 }
 
-c_header() {
-	sed -i "/listen 80 default_server;/a add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
-}
+sed -i "/listen 80 default_server;/a add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
 
-r_direct() {
-	sed -i "/listen 80 default_serve;/a rewrite ^/redirect_me https://linkedin.com permanent;" /etc/nginx/sites-available/default
-}
-
-notfound_page() {
-	sed -i "/listen 80 default_server;/a error_page 404 /notfound_404.html;" /etc/nginx/sites-available/default
-}
-
-c_header
-r_direct
+sed -i "/listen 80 default_serve;/a rewrite ^/redirect_me https://linkedin.com permanent;" /etc/nginx/sites-available/default
 notfound
-notfound_page
+sed -i "/listen 80 default_server;/a error_page 404 /notfound_404.html;" /etc/nginx/sites-available/default
 sudo service nginx restart
