@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# this module set up ha proxy
+
+update_and_install() {
+	apt-get -y update
+	apt-get -y install haproxy
+}
+
+p_setup() {
+echo "
+frontend client_frontend
+	bind *:80
+	default_backend my_backend
+
+backend client_backend
+	balance roundrobin
+	server 480372-web-01 54.159.26.191:80 check
+	server 480372-web-02 54.157.182.105:80 check
+" > /etc/haproxy/haproxy.cfg
+}
+
+update_and_install
+p_setup
+sevice haproxy restart
