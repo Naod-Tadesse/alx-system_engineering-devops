@@ -1,10 +1,10 @@
 # use ha proxy using puppet
 
-exec {'apt-get update':
+exec {'sudo apt-get update':
   provider => shell
 }
 
-exec {'apt-get install -y nginx':
+exec {'sudo apt-get install -y nginx':
   provider => shell
 }
 
