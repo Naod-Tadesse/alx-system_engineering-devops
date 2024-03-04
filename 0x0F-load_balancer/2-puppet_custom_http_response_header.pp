@@ -4,8 +4,8 @@ exec {'sudo apt-get update':
   provider => shell
 }
 
-exec {'sudo apt-get install -y nginx':
-  provider => shell
+package {'nginx':
+  ensure => 'present'
 }
 
 exec {'sed -i "/listen 80 default_server;/a add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default':
