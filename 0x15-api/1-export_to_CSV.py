@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """get users task progress and export to CSV"""
-import requests
 import csv
+import requests
 import sys
 
 
