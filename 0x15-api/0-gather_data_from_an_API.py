@@ -10,18 +10,17 @@ def todo_progress():
     response = requests.get(f"{url}/users/{sys.argv[1]}")
 
     employee_data = response.json()
-    employee_name = employee_data['name']
+    ename = employee_data['name']
 
     todo_response = requests.get(f"{url}/todos?userId={sys.argv[1]}")
 
     todos = todo_response.json()
 
-    total_tasks = len(todos)
-    done_tasks = sum(1 for todo in todos if todo['completed'])
+    tt = len(todos)
+    dt = sum(1 for todo in todos if todo['completed'])
 
-    print(
-        f"Employee {employee_name} is done with \
-tasks({done_tasks}/{total_tasks}):")
+    print(f"Employee {ename} is done with tasks ({dt}/{tt}):")
+
     for todo in todos:
         if todo['completed']:
             print(f"\t{todo['title']}")
