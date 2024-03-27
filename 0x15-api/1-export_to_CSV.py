@@ -1,42 +1,27 @@
 #!/usr/bin/python3
-"""get users task progress and export to CSV"""
+"""csv format"""
 import csv
 import requests
 import sys
 
 
-def todo_progress():
-    """get the tasks progress and export to CSV"""
+def getcsv():
+    """get csv"""
     url = "https://jsonplaceholder.typicode.com"
-    user_id = sys.argv[1]
-    response = requests.get(f"{url}/users/{user_id}")
+    uresponse = requests.get(f"{url}/users/{sys.argv[1]}")
+    tresponse = requests.get(f"{url}/todos?userId={sys.argv[1]}")
 
-    employee_data = response.json()
-    ename = employee_data['name']
+    jsson = uresponse.json()
+    ename = jsson.get('username')
 
-    todo_response = requests.get(f"{url}/todos?userId={user_id}")
+    todos = tresponse.json()
 
-    todos = todo_response.json()
-
-    tt = len(todos)
-    dt = sum(1 for todo in todos if todo['completed'])
-
-    with open(f"{user_id}.csv", 'w', newline='') as csvfile:
-        fieldnames = [
-            'USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS',
-            'TASK_TITLE']
-        writer = csv.DictWriter(
-            csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
-
-        writer.writeheader()
+    with open(f"{sys.argv[1]}.csv", mode='w') as filecsv:
+        file = csv.writer(filecsv, quoting=csv.QUOTE_ALL)
         for todo in todos:
-            writer.writerow({
-                'USER_ID': user_id,
-                'USERNAME': ename,
-                'TASK_COMPLETED_STATUS': todo['completed'],
-                'TASK_TITLE': todo['title']
-            })
+            file.writerow(
+                [sys.argv[1], ename, todo['completed'], todo['title']])
 
 
 if __name__ == "__main__":
-    todo_progress()
+    getcsv()
