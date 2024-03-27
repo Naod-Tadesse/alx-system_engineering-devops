@@ -19,7 +19,7 @@ def todo_progress():
     tt = len(todos)
     dt = sum(1 for todo in todos if todo['completed'])
 
-    print(f"Employee {ename} is done with tasks ({dt}/{tt}):")
+    print(f"Employee {ename} is done with tasks({dt}/{tt}):")
     for todo in todos:
         if todo['completed']:
             print(f"\t {todo['title']}")
