@@ -19,11 +19,10 @@ def todo_progress():
     tt = len(todos)
     dt = sum(1 for todo in todos if todo['completed'])
 
-    # Format output as expected by the test scripts
     print(f"Employee {ename} is done with tasks ({dt}/{tt}):")
     for todo in todos:
         if todo['completed']:
-            print(f"\t{todo['title']}")
+            print(f"\t {todo['title']}")
 
 
 if __name__ == "__main__":
