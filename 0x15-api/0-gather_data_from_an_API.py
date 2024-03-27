@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""get users task progrsss"""
+"""get users task progress"""
 import requests
 import sys
 
@@ -19,8 +19,8 @@ def todo_progress():
     tt = len(todos)
     dt = sum(1 for todo in todos if todo['completed'])
 
+    # Format output as expected by the test scripts
     print(f"Employee {ename} is done with tasks ({dt}/{tt}):")
-
     for todo in todos:
         if todo['completed']:
             print(f"\t{todo['title']}")
