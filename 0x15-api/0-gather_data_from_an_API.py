@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-
+"""get users task progrsss"""
 import requests
 import sys
 
 
 def todo_progress():
+    """get the tasks progress"""
     url = "https://jsonplaceholder.typicode.com"
     response = requests.get(f"{url}/users/{sys.argv[1]}")
 
