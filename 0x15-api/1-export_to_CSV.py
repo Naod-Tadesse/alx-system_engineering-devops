@@ -21,11 +21,6 @@ def todo_progress():
     tt = len(todos)
     dt = sum(1 for todo in todos if todo['completed'])
 
-    print(f"Employee {ename} is done with tasks ({dt}/{tt}):")
-    for todo in todos:
-        if todo['completed']:
-            print(f"\t{todo['title']}")
-
     with open(f"{user_id}.csv", 'w', newline='') as csvfile:
         fieldnames = [
             'USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS',
@@ -37,8 +32,8 @@ def todo_progress():
             writer.writerow({
                 'USER_ID': user_id,
                 'USERNAME': ename,
-                'TASK_COMPLETED_STATUS': todo['completed'],
-                'TASK_TITLE': todo['title']
+                'TASK_COMPLETED_STATUS': todo["completed"],
+                'TASK_TITLE': todo["title"]
             })
 
 
