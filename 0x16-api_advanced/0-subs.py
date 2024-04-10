@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """for a subreddit subs"""
-import requests
+from requests import get
 
 
 def number_of_subscribers(subreddit):
-    """sub reddit"""
+    """queries the Reddit API and returns the number of subscribers"""
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    agent = {'User-Agent': 'PostmanRuntime/7.37.3'}
-    result = requests.get(url, headers=agent)
-    if result.status_code == 200:
-        res = result.json()
-        return res.get('data').get('subscribers')
+    headers = {"User-Agent": "PostmanRuntime/7.37.3"}
+    response = get(url, headers=headers)
+    if response.status_code == 200:
+        res = response.json()
+        return res["data"]["subscribers"]
     else:
         return 0
