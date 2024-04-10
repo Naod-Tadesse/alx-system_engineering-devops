@@ -4,12 +4,18 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """sub reddits"""
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers)
+    """
+    no of subs
+    """
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {"User-Agent": "MyCoolScript/1.0 (by /u/naod)"}
+    response = requests.get(url, headers=headers, allow_redirects=False)
+
     if response.status_code == 200:
-        data = response.json()
-        return data["data"]["subscribers"]
+        try:
+            data = response.json()
+            return data["data"]["subscribers"]
+        except (KeyError, json.JSONDecodeError):
+            return 0
     else:
         return 0
