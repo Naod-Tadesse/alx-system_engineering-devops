@@ -1,5 +1,4 @@
-$edit = 'www/html/wp-settings.php'
 exec { 'phpp->php':
-  command => "sed -i 's/phpp/php/g' /var/${edit}",
+  command => "sudo sed -i 's/phpp/php/g' /var/www/html/wp-settings.php",
   path    => '/bin'
 }
