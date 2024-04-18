@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# scrigp to kill gunicorn
+
+pgrep gunicorn | xargs kill -HUP
