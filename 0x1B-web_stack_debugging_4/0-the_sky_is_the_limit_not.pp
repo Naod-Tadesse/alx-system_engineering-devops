@@ -1,3 +1,12 @@
 # Define the sed command to change the file des
-exec { '/usr/bin/env sed -i s/15/4096/ /etc/default/nginx': }
--> exec { '/usr/bin/env service nginx restart': }
+file { '/etc/default/nginx':
+  ensure  => file,
+  content => template('module_name/nginx_config.erb'),
+  notify  => Service['nginx'],
+}
+
+service { 'nginx':
+  ensure  => running,
+  enable  => true,
+  require => File['/etc/default/nginx'],
+}
